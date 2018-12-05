@@ -1,0 +1,34 @@
+#指定注册中心地址
+server:
+  port: 9002
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://120.79.153.77:3306/logisticsmgt?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: wawzj7788
+    ################Redis
+    #连接第0个库
+  redis:
+    database: 0
+    #连接的地址
+    host: 120.79.153.77
+    #超时时间：单位ms
+    timeout: 3000
+    #端口号
+    port: 6379
+    ##最大连接数：能够同时建立的“最大链接个数”
+    pool:
+      maxActive: 2000
+      #最大空闲数：空闲链接数大于maxIdle时，将进行回收
+      maxIdle: 200
+      #最小空闲数：低于minIdle时，将创建新的链接
+      minIdle: 200
+      #最大等待时间：单位ms
+      maxWait: 1000
+#mybatis 下划线转驼峰 映射配置  有了这个不用写xml
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    #打印sql 方便调试
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
