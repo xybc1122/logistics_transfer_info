@@ -12,6 +12,17 @@ public interface TscJcexWaybillNumberService {
     List<TscJcexWaybillNumber> tscJcexStatusNumberList();
 
 
+    /**
+     * 如果订单已签收 更新单号状态
+     * @param wbnId
+     * @return
+     */
+    int upTscJcexWaybillNumberStatus(Long wbnId);
 
-    int upTscJcexWaybillNumber(Long wbnId);
+    /**
+     * 更新单号表信息
+     * @param tscJcexWaybillNumber
+     * @return
+     */
+    int upTscJcexWaybillNumberInfo(TscJcexWaybillNumber tscJcexWaybillNumber);
 }

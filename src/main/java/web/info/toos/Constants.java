@@ -6,5 +6,5 @@ public interface Constants {
      */
     String URL_Track = "http://api.jcex.com/JcexJson/api/notify/sendmsg";
 
-    String TRACK_SIZE = "0/30 * * * * ?";
+    String TRACK_SIZE = "0/3000 * * * * ?";
 }

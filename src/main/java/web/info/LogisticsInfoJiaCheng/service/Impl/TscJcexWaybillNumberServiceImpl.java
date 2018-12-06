@@ -19,7 +19,12 @@ public class TscJcexWaybillNumberServiceImpl implements TscJcexWaybillNumberServ
     }
 
     @Override
-    public int upTscJcexWaybillNumber(Long wbnId) {
-        return tscJcexWaybillNumberMapper.upTscJcexWaybillNumber(wbnId);
+    public int upTscJcexWaybillNumberStatus(Long wbnId) {
+        return tscJcexWaybillNumberMapper.upTscJcexWaybillNumberStatus(wbnId);
+    }
+
+    @Override
+    public int upTscJcexWaybillNumberInfo(TscJcexWaybillNumber tscJcexWaybillNumber) {
+        return tscJcexWaybillNumberMapper.upTscJcexWaybillNumberInfo(tscJcexWaybillNumber);
     }
 }

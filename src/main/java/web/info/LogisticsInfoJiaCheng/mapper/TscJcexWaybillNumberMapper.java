@@ -1,10 +1,8 @@
 package web.info.LogisticsInfoJiaCheng.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import web.info.LogisticsInfoJiaCheng.pojo.TscJcexWaybillNumber;
+import web.info.LogisticsInfoJiaCheng.provider.TscJcexWaybillNumberProvider;
 
 import java.util.List;
 
@@ -20,13 +18,21 @@ public interface TscJcexWaybillNumberMapper {
     List<TscJcexWaybillNumber> tscJcexStatusNumberList();
 
     /**
-     * 如果订单已签收 更新状态
+     * 如果订单已签收 更新单号状态
      * @param wbnId
      * @return
      */
     @Update("UPDATE `tsc_jcex_waybillnumber`\n" +
             "SET `status` = 1\n" +
             "WHERE `wbn_id` = #{wbnId}")
-    int upTscJcexWaybillNumber(@Param("wbnId") Long wbnId);
+    int upTscJcexWaybillNumberStatus(@Param("wbnId") Long wbnId);
+
+    /**
+     * 更新单号表信息
+     * @param tscJcexWaybillNumber
+     * @return
+     */
+    @UpdateProvider(type = TscJcexWaybillNumberProvider.class,method = "upTscJcexWaybillNumberInfo")
+    int upTscJcexWaybillNumberInfo(TscJcexWaybillNumber tscJcexWaybillNumber);
 
 }

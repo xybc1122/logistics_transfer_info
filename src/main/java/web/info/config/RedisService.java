@@ -6,21 +6,18 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Component
-public class BaseRedisService {
+public class RedisService {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
-    RedisTemplate<Object, Object> redisTemplate;
-    @Resource(name = "redisTemplate")
-    ValueOperations<Object, Object> valOpsObj;
+    RedisTemplate redisTemplate;
+
 
     // stringRedisTemplate.opsForValue();//操作字符串
     // stringRedisTemplate.opsForHash();//操作hash
@@ -71,7 +68,7 @@ public class BaseRedisService {
         if (value instanceof List) {
             List<Object> listValue = (List<Object>) value;
             if (listValue != null) {
-                redisTemplate.opsForList().rightPush(key, listValue.toString());
+                redisTemplate.opsForList().rightPush(key, listValue);
             }
         }
     }
@@ -89,14 +86,35 @@ public class BaseRedisService {
         return null;
     }
 
-    public String getListKey(String key) {
-        if (key != null) {
-            String leftPop = stringRedisTemplate.opsForList().leftPop(key);
-            return leftPop;
+    /**
+     * 获取list缓存的内容
+     * @param key 键
+     * @param start 开始
+     * @param end 结束 0 到 -1代表所有值
+     * @return
+     */
+    public List<Object> getListKey(String key, long start, long end) {
+        try {
+            return redisTemplate.opsForList().range(key, start, end);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
-        return null;
-    }
 
+    }
+    /**
+     * 获取list缓存的长度
+     * @param key 键
+     * @return
+     */
+    public long lGetListSize(String key) {
+        try {
+            return redisTemplate.opsForList().size(key);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
     //redis 删除数据
     public void delData(String key) {

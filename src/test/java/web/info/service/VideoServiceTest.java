@@ -1,14 +1,8 @@
-package web.video.service;
+package web.info.service;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * server层测试
@@ -27,8 +21,8 @@ public class VideoServiceTest {
         List<Video> list = videoService.findAll();
         //断言判断非空
         assertNotNull(list);
-        for (Video video : list) {
-            System.out.println(video.getTitle());
+        for (Video info : list) {
+            System.out.println(info.getTitle());
 
         }
     }
