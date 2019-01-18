@@ -1,6 +1,8 @@
 package web.info.LogisticsInfoJiaCheng.pojo;
 
-
+/**
+ * 轨迹
+ */
 public class TscJcexStatusDetail {
   /**
    * 标识id

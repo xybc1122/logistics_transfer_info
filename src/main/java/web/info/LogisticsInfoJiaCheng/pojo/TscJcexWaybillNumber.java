@@ -1,7 +1,7 @@
 package web.info.LogisticsInfoJiaCheng.pojo;
 
 
-public class TscJcexWaybillNumber {
+public class TscJcexWaybillNumber{
   /**
    * ID
    */
@@ -34,6 +34,11 @@ public class TscJcexWaybillNumber {
    * 客户ID
    */
   private Long customerId;
+  /**
+   * 轨迹
+   */
+  private TscJcexStatusDetail tscJcexStatusDetail;
+
   /**
    * 最近更新时间
    */
@@ -103,26 +108,19 @@ public class TscJcexWaybillNumber {
     this.customerId = customerId;
   }
 
+  public TscJcexStatusDetail getTscJcexStatusDetail() {
+    return tscJcexStatusDetail;
+  }
+
+  public void setTscJcexStatusDetail(TscJcexStatusDetail tscJcexStatusDetail) {
+    this.tscJcexStatusDetail = tscJcexStatusDetail;
+  }
+
   public Long getLastTime() {
     return lastTime;
   }
 
   public void setLastTime(Long lastTime) {
     this.lastTime = lastTime;
-  }
-
-  @Override
-  public String toString() {
-    return "TscJcexWaybillNumber{" +
-            "wbnId=" + wbnId +
-            ", waybillNumber='" + waybillNumber + '\'' +
-            ", recipientCountry='" + recipientCountry + '\'' +
-            ", totalWeight=" + totalWeight +
-            ", chargeWeight=" + chargeWeight +
-            ", checkInVolumeWeight=" + checkInVolumeWeight +
-            ", status=" + status +
-            ", customerId=" + customerId +
-            ", lastTime=" + lastTime +
-            '}';
   }
 }

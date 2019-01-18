@@ -13,6 +13,13 @@ public class TscJcexWaybillNumberServiceImpl implements TscJcexWaybillNumberServ
     @Autowired
     private TscJcexWaybillNumberMapper tscJcexWaybillNumberMapper;
 
+
+
+    @Override
+    public List<TscJcexWaybillNumber> realTimeInfo() {
+        return tscJcexWaybillNumberMapper.realTimeInfo();
+    }
+
     @Override
     public List<TscJcexWaybillNumber> tscJcexStatusNumberList() {
         return tscJcexWaybillNumberMapper.tscJcexStatusNumberList();

@@ -4,7 +4,12 @@ import web.info.LogisticsInfoJiaCheng.pojo.TscJcexWaybillNumber;
 import java.util.List;
 
 public interface TscJcexWaybillNumberService {
-
+    /**
+     * 查询实时物流数据
+     *
+     * @return
+     */
+    List<TscJcexWaybillNumber> realTimeInfo();
     /**
      * 查询订单还没签收的订单信息
      */
