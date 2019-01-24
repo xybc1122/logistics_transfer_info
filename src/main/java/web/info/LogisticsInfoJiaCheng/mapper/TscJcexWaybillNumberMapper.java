@@ -2,6 +2,7 @@ package web.info.LogisticsInfoJiaCheng.mapper;
 
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
+import web.info.LogisticsInfoJiaCheng.pojo.LogisticsData;
 import web.info.LogisticsInfoJiaCheng.pojo.TscJcexWaybillNumber;
 import web.info.LogisticsInfoJiaCheng.provider.TscJcexWaybillNumberProvider;
 
@@ -23,7 +24,7 @@ public interface TscJcexWaybillNumberMapper {
                     one = @One(select = "web.info.LogisticsInfoJiaCheng.mapper.TscJcexStatusDetailMapper.getStatusDetail",
                             fetchType = FetchType.EAGER))
     })
-    List<TscJcexWaybillNumber> realTimeInfo();
+    List<TscJcexWaybillNumber> realTimeInfo(LogisticsData logistics);
 
 
     /**
